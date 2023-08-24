@@ -2,6 +2,8 @@ import { Client, EmbedBuilder, Events, GatewayIntentBits, TextChannel } from "di
 
 require("dotenv").config();
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const devChannel = "1044253195783901284";
+const prodChannel = "876921417931837450";
 
 client.once(Events.ClientReady, (c: Client) => {
   console.log(`Ready! Logged in as ${c.user?.tag}`);
@@ -28,14 +30,12 @@ const exampleEmbed = new EmbedBuilder()
   //   { name: "Inline field title", value: "Some value here", inline: true }
   // )
   // .addFields({ name: "Inline field title", value: "Some value here", inline: true })
-  .setImage("https://i.imgur.com/wDtT50d.png")
+  .setImage("https://i3.imageban.ru/out/2023/05/08/2d763d52c13fdcb72fe799e051837154.jpg")
   .setTimestamp();
 // .setFooter({ text: "Some footer text here", iconURL: "https://i.imgur.com/AfFp7pu.png" });
 
 client.on("ready", async () => {
-  const channel = await client.channels
-    .fetch("876921417931837450")
-    .then((chn) => chn as TextChannel);
+  const channel = await client.channels.fetch(devChannel).then((chn) => chn as TextChannel);
   if (channel) {
     channel.send({ embeds: [exampleEmbed] });
   }
