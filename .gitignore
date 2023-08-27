@@ -130,4 +130,5 @@ dist
 .pnp.*
 
 mock/
+build/
 localFeed.json
