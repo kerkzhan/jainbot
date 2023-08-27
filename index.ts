@@ -14,6 +14,6 @@ cron.schedule("0 0 * * *", async () => {
   sendDiscordEmbed(newPosts);
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`Application is listening to port ${PORT}.....`);
 });
