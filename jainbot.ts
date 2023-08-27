@@ -28,6 +28,10 @@ export const sendDiscordEmbed = (posts: FormattedPost[]) => {
       .fetch(process.env.CHANNEL_ID || "")
       .then((chn) => chn as TextChannel);
     if (channel) {
+      if (!posts.length) {
+        channel.send("No new games today 😢");
+        return;
+      }
       posts.forEach((post) => channel.send({ embeds: [createdGameEmbed(post)] }));
     }
   });

@@ -15,7 +15,7 @@ cron.schedule(
     const newPosts = await fetchPosts();
     sendDiscordEmbed(newPosts);
   },
-  { scheduled: true, timezone: "Asia/Singapore", runOnInit: true }
+  { scheduled: true, timezone: "Asia/Singapore" }
 );
 
 app.listen(PORT, () => {
