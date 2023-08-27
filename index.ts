@@ -8,11 +8,15 @@ const PORT = 3000;
 
 console.log("Starting app...");
 
-cron.schedule("0 0 * * *", async () => {
-  console.log("Fetching RSS feed from fitgirl");
-  const newPosts = await fetchPosts();
-  sendDiscordEmbed(newPosts);
-});
+cron.schedule(
+  "0 0 * * *",
+  async () => {
+    console.log("Fetching RSS feed from fitgirl");
+    const newPosts = await fetchPosts();
+    sendDiscordEmbed(newPosts);
+  },
+  { scheduled: true, timezone: "Asia/Singapore", runOnInit: true }
+);
 
 app.listen(PORT, () => {
   console.log(`Application is listening to port ${PORT}.....`);
